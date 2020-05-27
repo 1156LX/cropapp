@@ -1,0 +1,15 @@
+server:
+  port: 9810
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://59.110.45.91:8895/aademo?serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:8895/aademo?serverTimezone=UTC&useSSL=false&useUnicode=true&charactorEncoding=UTF-8
+    username: root
+    password: opn313#AA
+    #password: root
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.cropapp.entity
+  configuration:
+    map-underscore-to-camel-case: true

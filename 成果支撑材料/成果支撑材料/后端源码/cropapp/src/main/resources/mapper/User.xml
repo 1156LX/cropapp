@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cropapp.dao.UserDao">
+
+    <select id="findByName" parameterType="String" resultType="com.cropapp.entity.User">
+        select * from user where user_name=#{username};
+    </select>
+
+    <select id="findById" resultType="com.cropapp.entity.User">
+        select * from user where user_id=#{id};
+    </select>
+
+    <select id="allUser" resultType="com.cropapp.entity.User">
+        select * from user;
+    </select>
+    <insert id="addUser" parameterType="com.cropapp.entity.User" >
+        insert into user( user_id,user_name,user_password )values
+        (#{userId},#{userName},#{userPassword});
+    </insert>
+
+    <delete id="deleteUser" >
+        delete from user where user_id=#{id};
+    </delete>
+
+    <update id="updateUser" parameterType="com.cropapp.entity.User">
+        update user
+        <set>
+            <if test="userName!=null">
+                user_name=#{userName},
+            </if>
+            <if test="userPassword!=null">
+                user_password=#{userPassword}
+            </if>
+        </set>
+        where user_id=#{userId};
+    </update>
+</mapper>

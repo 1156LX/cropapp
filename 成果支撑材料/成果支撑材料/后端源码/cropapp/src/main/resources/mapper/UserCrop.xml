@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cropapp.dao.UserCropDao">
+    <delete id="deleteCrop">
+       delete from usercrop where id=#{id};
+   </delete>
+
+    <select id="findById" resultType="com.cropapp.entity.UserCrop">
+        select * from usercrop where id=#{id};
+    </select>
+
+    <insert id="addCrop" parameterType="com.cropapp.entity.UserCrop" >
+        insert into usercrop(
+        id,crop_id,user_id,height,date,temperature,humidity,place,precipitation,co2,o2,n2) values
+        (#{id},#{cropId},#{userId},#{height},#{date},#{temperature},
+        #{humidity},#{place},#{precipitation},#{co2},#{o2},#{n2});
+    </insert>
+
+    <update id="updateCrop" parameterType="com.cropapp.entity.UserCrop">
+        update usercrop set
+        id=#{id},crop_id=#{cropId},user_id=#{userId},height=#{height},date=#{date},
+        temperature=#{temperature},humidity=#{humidity},place=#{place},
+        precipitation=#{precipitation},co2=#{co2},o2=#{o2},n2=#{n2};
+    </update>
+
+    <select id="allCrop" resultType="com.cropapp.entity.UserCrop">
+        select * from usercrop;
+    </select>
+
+    <select id="findByUser" resultType="com.cropapp.entity.UserCrop"  >
+        select * from usercrop where user_id =#{userId};
+    </select>
+</mapper>

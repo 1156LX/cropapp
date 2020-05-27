@@ -1,0 +1,50 @@
+aa 更新日志:
+
+version 0.0.1: 3月
+已验证：
+    +user接口URL              HTTP方法     接口说明
+    /users                     GET         查询用户列表
+    /user                      POST        增加用户
+    /user/{userPhoneNumber}    GET         查询用户[根据用户手机号]
+    /user/{userPhoneNumber}    DELETE      删除用户[根据用户手机号]
+    /user/{userPhoneNumber}    PUT         更新用户信息[根据用户手机号]
+
+    +crop接口URL              HTTP方法     接口说明
+    /crops                     GET         查询作物列表
+    /crop/{cropId}             GET         查询作物数据[根据作物编号]
+
+    +返回数据 resultType 已定义为 JSON
+
+待解决：
+    -数据库未建立
+    -dao中需要补充sql语句
+    -返回响应字段未实现
+    -统一异常类型未实现
+
+version 0.0.2: 4月
+已验证：
+    +修改了MySQL连接属性[添加连接数据库库名，更改端口，修改字符集，设定时区]
+    +添加了User相关事务
+    +添加了部分Crop的相关事务[由于设计表的缘故，目前仅支持查询Crop数据]
+
+待解决：
+    -优化现有的数据库，重新设计有关Crop的表
+    -拓展Crop相关事务的接口
+    -dao中需要补充sql语句
+    -统一异常类型未实现
+
+version 0.0.3: 5月
+已验证：
+    +增添crop数据内容
+    +crop insert delete 接口完成【未开放，需要重新设计crop表后开放】
+    +完善统一返回响应字段
+
+待解决：
+    -统一异常类型未实现
+    -继续完善crop的设计
+
+
+version 0.0.4:
+已验证：
+
+待解决：

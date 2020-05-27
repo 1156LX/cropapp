@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cropapp.dao.CropDao">
+
+    <delete id="deleteCrop">
+       delete from crop where crop_id=#{id};
+   </delete>
+
+    <select id="findById" resultType="com.cropapp.entity.Crop">
+        select * from crop where crop_id=#{id};
+    </select>
+
+    <insert id="addCrop" parameterType="com.cropapp.entity.Crop" >
+        insert into crop(
+        crop_id,crop_name,crop_describe,crop_baidu_url,crop_img_url,
+        crop_growth_environment,crop_cultivation_techniques,
+        crop_nutritive_value,crop_disease_control,crop_storage_method) values
+        (#{cropId},#{cropName},#{cropDescribe},#{cropBaiduUrl},#{cropImgUrl},#{cropGrowthEnvironment},
+        #{cropCultivationTechniques},#{cropNutritiveValue},#{cropDiseaseControl},#{cropStorageMethod});
+    </insert>
+
+    <update id="updateCrop" parameterType="com.cropapp.entity.Crop">
+        update crop set
+        crop_name=#{cropName},crop_describe=#{cropDescribe},crop_baidu_url=#{cropBaiduUrl},
+        crop_img_url=#{cropImgUrl},crop_growth_environment=#{cropGrowthEnvironment},
+        crop_cultivation_techniques=#{cropCultivationTechniques},
+        crop_nutritive_value=#{cropNutritiveValue},crop_disease_control=#{cropDiseaseControl},
+        crop_storage_method=#{cropStorageMethod}where crop_id=#{cropId};
+    </update>
+
+    <select id="allCrop" resultType="com.cropapp.entity.Crop">
+        select * from crop;
+    </select>
+
+    <select id="findByName" resultType="com.cropapp.entity.Crop" parameterType="String" >
+        select * from crop where crop_name =#{name};
+    </select>
+
+</mapper>
